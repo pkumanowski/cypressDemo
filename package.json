@@ -1,0 +1,17 @@
+{
+  "name": "finalproject",
+  "version": "1.0.0",
+  "description": "Graded project for ALK automation studies",
+  "main": "index.js",
+  "scripts": {
+    "test": "cypress open",
+    "cy:run": "cypress run"
+  },
+  "author": "Pawel Kumanowski",
+  "license": "ISC",
+  "devDependencies": {
+    "@faker-js/faker": "^6.3.1",
+    "cypress": "^9.7.0",
+    "cypress-xpath": "^1.6.2"
+  }
+}
