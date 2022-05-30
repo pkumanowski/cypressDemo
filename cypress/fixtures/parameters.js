@@ -5,6 +5,7 @@ export const parametersSwagLabsPage = {
     existingPassword: 'admin',
     registerButtonText: 'Sign up',
     loginButtonText: 'Log in',
+    logoutButtonText: 'Log out',
     newUser: faker.name.findName(),
     newPassword: faker.random.word(),
 };

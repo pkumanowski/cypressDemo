@@ -28,4 +28,10 @@ describe('page login test', () => {
             parametersSwagLabsPage.loginButtonText
         );
     });
+    it('it should log out from app', () => {
+        cy.logout(
+            parametersSwagLabsPage.logoutButtonText,
+            parametersSwagLabsPage.loginButtonText
+        );
+    });
 });

@@ -24,3 +24,12 @@ Cypress.Commands.add('singUpWithNewUser', (username, password, buttonText) => {
 Cypress.Commands.add('loginWithNewUser', (username, password, buttonText) => {
     login(username, password, buttonText);
 });
+
+Cypress.Commands.add('logout', (logoutButtonText, loginButtonText) => {
+    cy.get('[onclick="logOut()"]')
+        .should('have.text', logoutButtonText)
+        .click();
+    cy.get('[data-target="#logInModal"]')
+        .should('be.visible')
+        .should('have.text', loginButtonText);
+});
