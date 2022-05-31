@@ -3,7 +3,7 @@ Cypress.config().waitForAnimations = true;
 
 import { parametersCartData } from '../fixtures/parameters';
 
-describe('asdasd', () => {
+describe('purchase cart tests', () => {
     it('should open landing page', () => {
         cy.visit('/');
     });
