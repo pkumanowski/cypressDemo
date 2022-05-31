@@ -17,4 +17,12 @@ export const parametersCartData = {
     productText: 'Samsung galaxy s6',
     addToCartButtonText: 'Add to cart',
     addProductMessageText: 'Product added',
+    placeOrderButtonText: 'Place Order',
+    price: '360',
+    name: faker.name.findName(),
+    country: 'Poland',
+    city: 'Warsaw',
+    creditCard: faker.finance.creditCardNumber(),
+    month: faker.date.month(),
+    year: '2022',
 };

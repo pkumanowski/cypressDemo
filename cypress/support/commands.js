@@ -37,7 +37,7 @@ Cypress.Commands.add('logout', (logoutButtonText, loginButtonText) => {
 
 Cypress.Commands.add(
     'addToCart',
-    (productText, addToCartButtonText, addProductMessageText, username) => {
+    (productText, addToCartButtonText, addProductMessageText) => {
         cy.get('[href="prod.html?idp_=1"][class]')
             .should('have.text', productText)
             .click();
@@ -48,7 +48,6 @@ Cypress.Commands.add(
             .should('have.text', addToCartButtonText)
             .click();
         cy.wait(2000);
-        cy.get('[id="nameofuser"]').should('have.text', `Welcome ${username}`);
         cy.on('window:alert', (t) => {
             expect(t).to.contains(addProductMessageText);
         });
@@ -60,6 +59,51 @@ Cypress.Commands.add(
 );
 
 Cypress.Commands.add('deleteFromCart', (productText) => {
-    cy.get('onclick^="deleteItem').click();
+    cy.get('[onclick^="deleteItem"]').click();
     cy.get('[id="tbodyid"]').should('not.contain', productText);
+    cy.get('[class="nav-item active"]')
+        .click()
+        .should('be.visible', '[class="list-group-item"]');
 });
+
+Cypress.Commands.add('deleteFromCart', (productText) => {
+    cy.get('[onclick^="deleteItem"]').click();
+    cy.get('[id="tbodyid"]').should('not.contain', productText);
+    cy.get('[class="nav-item active"]')
+        .click()
+        .should('be.visible', '[class="list-group-item"]');
+});
+
+Cypress.Commands.add(
+    'placeOrder',
+    (
+        productText,
+        addToCartButtonText,
+        addProductMessageText,
+        placeOrderButtonText,
+        price,
+        newUser,
+        contry,
+        city,
+        creditCard,
+        month,
+        year
+    ) => {
+        cy.addToCart(productText, addToCartButtonText, addProductMessageText);
+        cy.get('[data-target="#orderModal"]')
+            .click()
+            .should('have.text', placeOrderButtonText);
+        cy.get('[id="orderModalLabel"]').should('be.visible');
+        cy.get('[id="totalm"]').should('contain.text', price);
+        cy.wait(2000);
+        cy.get('[id="name"]').type(newUser);
+        cy.get('[id="country"]').type(contry);
+        cy.get('[id="city"]').type(city);
+        cy.get('[id="card"]').type(creditCard);
+        cy.get('[id="month"]').type(month);
+        cy.get('[id="year"]').type(year);
+        cy.get('[onclick="purchaseOrder()"]').click();
+        cy.get('[class="lead text-muted "]').should('contain.text', price);
+        cy.get('[class="confirm btn btn-lg btn-primary"]').click();
+    }
+);
