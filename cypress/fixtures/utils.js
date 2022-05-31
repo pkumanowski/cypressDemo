@@ -17,3 +17,22 @@ export const login = (username, password, buttonText) => {
     cy.get('[onclick="logIn()"]').should('have.text', buttonText).click();
     cy.get('[id="nameofuser"]').should('have.text', `Welcome ${username}`);
 };
+
+export const addToCart = (
+    productText,
+    addToCartButtonText,
+    addProductMessageText
+) => {
+    cy.get('[href="prod.html?idp_=1"][class]')
+        .should('have.text', productText)
+        .click();
+    cy.get('h2[class=name]')
+        .should('have.text', productText)
+        .should('be.visible');
+    cy.get('[onclick="addToCart(1)"]')
+        .should('have.text', addToCartButtonText)
+        .click();
+    cy.on('window:alert', (t) => {
+        expect(t).to.contains(addProductMessageText);
+    });
+};

@@ -1,6 +1,6 @@
 import { faker } from '@faker-js/faker';
 
-export const parametersSwagLabsPage = {
+export const parametersLoginData = {
     existingLogin: 'admin',
     existingPassword: 'admin',
     registerButtonText: 'Sign up',
@@ -8,4 +8,13 @@ export const parametersSwagLabsPage = {
     logoutButtonText: 'Log out',
     newUser: faker.name.findName(),
     newPassword: faker.random.word(),
+    productText: 'Samsung galaxy s6',
+    addToCartButtonText: 'Add to cart',
+    addProductMessageText: 'Product added',
+};
+
+export const parametersCartData = {
+    productText: 'Samsung galaxy s6',
+    addToCartButtonText: 'Add to cart',
+    addProductMessageText: 'Product added',
 };
