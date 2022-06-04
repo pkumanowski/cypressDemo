@@ -9,4 +9,4 @@
 ## Cypress commands
 
 1. npm run test - starts Cypress test runner in headed mode, where you can interract with GUI.
-2. npm cy:run - runs all tests in headless mode, test output will be in the terminal
+2. npm run cy:run - runs all tests in headless mode, test output will be in the terminal
