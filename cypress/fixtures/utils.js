@@ -5,7 +5,9 @@ export const signUp = (username, password, buttonText) => {
     cy.wait(2000);
     cy.get('[id="sign-username"]').type(username);
     cy.get('[id="sign-password"]').type(password);
-    cy.get('[onclick="register()"]').should('have.text', buttonText).click();
+    cy.get('[onclick="register()"]')
+        .should('have.text', buttonText)
+        .click({ force: true });
 };
 
 export const login = (username, password, buttonText) => {
@@ -31,7 +33,7 @@ export const addToCart = (
         .should('be.visible');
     cy.get('[onclick="addToCart(1)"]')
         .should('have.text', addToCartButtonText)
-        .click();
+        .click({ force: true });
     cy.on('window:alert', (t) => {
         expect(t).to.contains(addProductMessageText);
     });

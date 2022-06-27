@@ -9,7 +9,9 @@ Cypress.Commands.add(
         cy.on('window:alert', (t) => {
             expect(t).to.contains('This user already exist.');
         });
-        cy.xpath('//*[@id="signInModal"]/div/div/div[3]/button[1]').click();
+        cy.xpath('//*[@id="signInModal"]/div/div/div[3]/button[1]').click({
+            force: true,
+        });
     }
 );
 
